@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nandana KP - Cybersecurity Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: #fff;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .section {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        #hero {
+            text-align: center;
+            padding: 150px 20px 100px;
+            background: none;
+        }
+        #hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        #hero p {
+            font-size: 1.2em;
+            margin: 5px 0;
+        }
+        .social-icons a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 2em;
+        }
+        .social-icons a:hover {
+            color: #00bfff;
+        }
+        h2 {
+            border-bottom: 2px solid #00bfff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .project, .skill-category {
+            margin-bottom: 30px;
+        }
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill-list span {
+            background: #00bfff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .download-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #00bfff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .download-btn:hover {
+            background: #008cff;
+        }
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            #hero {
+                padding: 100px 20px 50px;
+            }
+            #hero h1 {
+                font-size: 2.5em;
+            }
+            .section {
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section id="hero">
+            <h1>NANDANA KP</h1>
+            <p>Cybersecurity Analyst | Ethical Hacker</p>
+            <p>nandanaedu5@gmail.com | +91 7034531699 | Willing to Relocate</p>
+            <div class="social-icons">
+                <a href="https://github.com/yourusername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/yourusername" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <a href="NandanaResume.pdf" download class="download-btn">Download Resume</a>
+        </section>
+
+        <section id="summary" class="section">
+            <h2>Professional Summary</h2>
+            <p>Enthusiastic and detail-oriented Cybersecurity Analyst with hands-on experience in vulnerability assessment, penetration testing, and threat detection. Strong foundation in networking concepts such as TCP/IP, routing, firewalls, and DNS. Skilled in using tools like Nessus, Wireshark, Burp Suite, and OWASP ZAP for network and web penetration testing. Committed to ensuring system and network security through continuous monitoring, analysis, and testing.</p>
+        </section>
+
+        <section id="experience" class="section">
+            <h2>Experience</h2>
+            <div class="experience-item">
+                <h3>Security Analyst Trainee</h3>
+                <p>Apr 2025 – Present | Keralavision Broadband Ltd, Thrissur</p>
+                <ul>
+                    <li>Conducted vulnerability assessments using OpenVAS and OWASP ZAP on internal portals.</li>
+                    <li>Analyzed network logs and threat indicators using SIEM tools and Wireshark.</li>
+                    <li>Performed regular port scanning, firmware checks, and packet inspection on routers and switches.</li>
+                    <li>Performed web scraping using OSINT tools to gather actionable threat intelligence.</li>
+                    <li>Conducted web application penetration testing on internal assets, identifying vulnerabilities in real-world environments.</li>
+                    <li>Collaborated cross-functionally with teams to analyze product risks and highlight cyber threats.</li>
+                    <li>Applied problem-solving skills to troubleshoot cybersecurity issues, often working late to resolve complex cases.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>M.Sc. in Cyber Security & Ethical Hacking</h3>
+                <p>2023 – 2025 | Yenepoya University, Mangalore | CGPA: 9.0/10</p>
+            </div>
+            <div class="education-item">
+                <h3>B.Sc. in Forensic Science, Chemistry, Genetics</h3>
+                <p>2019 – 2022 | Garden City University, Bangalore | CGPA: 9.1/10</p>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Streamflix-Secure System</h3>
+                <ul>
+                    <li>Designed a secure streaming web system using Python and Streamlit.</li>
+                    <li>Implemented MFA login authentication to ensure strong access control.</li>
+                    <li>Integrated secure payment features with validation, encryption, and logging.</li>
+                    <li>Enforced account lockout after 3 failed login attempts with alert generation.</li>
+                    <li>Built Streamlit-based admin panel to monitor access logs and user activity.</li>
+                </ul>
+            </div>
+            <div class="project">
+                <h3>AI-Powered Network Traffic Analysis and Anomaly Detection</h3>
+                <ul>
+                    <li>Developed real-time network traffic analysis system using machine learning in Python.</li>
+                    <li>Detected DDoS and insider threats using supervised models (Random Forest, KNN).</li>
+                    <li>Integrated Wireshark for live packet capture and behavior analysis.</li>
+                    <li>Deployed Streamlit dashboard for visualizing network anomalies.</li>
+                </ul>
+            </div>
+            <div class="project">
+                <h3>Secure Event Management Web Application</h3>
+                <ul>
+                    <li>Built a PHP-based web portal with role-based access control and secure login.</li>
+                    <li>Conducted penetration testing using Burp Suite and OWASP ZAP.</li>
+                    <li>Hardened the app against SQL Injection, XSS, and CSRF.</li>
+                    <li>Implemented server-side logging and anomaly detection for admin alerts.</li>
+                </ul>
+            </div>
+            <div class="project">
+                <h3>Windows-Based Keylogger with Persistence</h3>
+                <ul>
+                    <li>Created a Python-based keylogger for Windows environments to simulate real-world malware behavior.</li>
+                    <li>Enabled stealth mode and persistence through registry modification and startup injection.</li>
+                    <li>Logged keystrokes to an encrypted file and exfiltrated data via SMTP/email simulation.</li>
+                    <li>Incorporated anti-debugging techniques to evade sandbox analysis and basic detection.</li>
+                    <li>Demonstrated ethical use for malware behavior analysis and training simulations.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2>Skills</h2>
+            <div class="skill-category">
+                <h3>Penetration Testing</h3>
+                <div class="skill-list">
+                    <span>Burp Suite</span> <span>OWASP ZAP</span> <span>Nessus</span> <span>Nikto</span> <span>OpenVAS</span> <span>Metasploit</span> <span>Cobalt Strike</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Red Teaming</h3>
+                <div class="skill-list">
+                    <span>Active Directory assessments</span> <span>Privilege escalation</span> <span>Lateral movement</span> <span>Evasion techniques</span> <span>Phishing</span> <span>Vishing</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Cloud Security</h3>
+                <div class="skill-list">
+                    <span>AWS</span> <span>Azure</span> <span>GCP assessments</span> <span>Kubernetes testing</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Web & App Security</h3>
+                <div class="skill-list">
+                    <span>OWASP Top 10</span> <span>API Security</span> <span>Mobile (Android/iOS/Windows/Linux)</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Vulnerabilities</h3>
+                <div class="skill-list">
+                    <span>RFI</span> <span>SSRF</span> <span>SQLi</span> <span>XSS</span> <span>IDOR</span> <span>XXE</span> <span>Buffer Overflow</span> <span>RCE</span> <span>LFI</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Tools</h3>
+                <div class="skill-list">
+                    <span>Nmap</span> <span>Wireshark</span> <span>SQLmap</span> <span>Mimikatz</span> <span>Responder</span> <span>Postman</span> <span>mitmproxy</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Programming</h3>
+                <div class="skill-list">
+                    <span>Python</span> <span>Bash</span> <span>PowerShell</span> <span>JavaScript</span> <span>SQL</span> <span>HTML</span> <span>PHP</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Platforms</h3>
+                <div class="skill-list">
+                    <span>Windows</span> <span>Linux (Kali, Ubuntu)</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Monitoring & Analysis</h3>
+                <div class="skill-list">
+                    <span>Wireshark</span> <span>Splunk</span> <span>SIEM</span> <span>EDR</span> <span>IDS/IPS</span> <span>Log Analysis</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Soft Skills</h3>
+                <div class="skill-list">
+                    <span>Teamwork</span> <span>Communication</span> <span>Time Management</span> <span>Documentation</span> <span>Critical Thinking</span> <span>Problem Solving</span> <span>Leadership</span> <span>Adaptability</span> <span>Attention to Detail</span> <span>Conflict Resolution</span> <span>Collaboration</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="section">
+            <h2>Certifications</h2>
+            <ul>
+                <li>Cybersecurity Internship – Cyber Police Station, Malappuram</li>
+                <li>Cybersecurity Tools & Attacks – IBM (Coursera)</li>
+                <li>SQL Injection Attack – EC-Council</li>
+                <li>Cybersecurity Analyst Job Simulation – TCS Forage</li>
+                <li>Endpoint Security – Cisco NetAcad</li>
+                <li>Fortinet Certified Fundamentals – FCF 3.0</li>
+                <li>CEH (Certified Ethical Hacker) – Pursuing</li>
+            </ul>
+        </section>
+
+        <section id="languages" class="section">
+            <h2>Languages</h2>
+            <div class="skill-list">
+                <span>English</span> <span>Malayalam</span> <span>Hindi</span> <span>Tamil</span> <span>Kannada</span>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
