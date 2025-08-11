@@ -4,29 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nandana KP - Cybersecurity Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
+        body, html {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-image: url('background.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            font-family: 'Roboto', sans-serif;
             color: #fff;
-            line-height: 1.6;
+            position: relative;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: #000;
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 0;
+            text-align: center;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 255, 0.2);
+        }
+        .nav a {
+            color: #00bfff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav a:hover {
+            color: #fff;
         }
         .section {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             padding: 40px 20px;
             margin-bottom: 20px;
             border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
+        .section:nth-child(5) { animation-delay: 0.8s; }
+        .section:nth-child(6) { animation-delay: 1s; }
+        .section:nth-child(7) { animation-delay: 1.2s; }
+        .section:nth-child(8) { animation-delay: 1.4s; }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3);
         }
         #hero {
             text-align: center;
@@ -36,24 +87,36 @@
         #hero h1 {
             font-size: 3em;
             margin-bottom: 10px;
+            font-family: 'Roboto Mono', monospace;
+            color: #00bfff;
+            text-shadow: 0 0 10px #00bfff;
         }
         #hero p {
             font-size: 1.2em;
             margin: 5px 0;
         }
         .social-icons a {
-            color: #fff;
+            color: #00bfff;
             margin: 0 15px;
             text-decoration: none;
-            font-size: 2em;
+            font-size: 2.5em;
+            transition: color 0.3s;
         }
         .social-icons a:hover {
-            color: #00bfff;
+            color: #fff;
         }
         h2 {
             border-bottom: 2px solid #00bfff;
             padding-bottom: 10px;
             margin-bottom: 20px;
+            font-family: 'Roboto Mono', monospace;
+            color: #00bfff;
+            display: flex;
+            align-items: center;
+        }
+        h2 i {
+            margin-right: 10px;
+            color: #00bfff;
         }
         ul {
             list-style-type: disc;
@@ -63,27 +126,35 @@
             margin-bottom: 30px;
         }
         .skill-list {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 10px;
         }
         .skill-list span {
-            background: #00bfff;
-            padding: 5px 10px;
+            background: rgba(0, 191, 255, 0.2);
+            padding: 8px 12px;
             border-radius: 5px;
             font-size: 0.9em;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        .skill-list span:hover {
+            background: rgba(0, 191, 255, 0.4);
         }
         .download-btn {
             display: inline-block;
             margin-top: 20px;
             padding: 10px 20px;
             background: #00bfff;
-            color: #fff;
+            color: #000;
             text-decoration: none;
             border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
         }
         .download-btn:hover {
-            background: #008cff;
+            background: #fff;
+            color: #000;
         }
         /* Mobile responsiveness */
         @media (max-width: 768px) {
@@ -96,29 +167,49 @@
             .section {
                 padding: 30px 15px;
             }
+            .skill-list {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+            .nav {
+                padding: 5px 0;
+            }
+            .nav a {
+                margin: 0 10px;
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
 <body>
+    <nav class="nav">
+        <a href="#summary">Summary</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#languages">Languages</a>
+    </nav>
+    <canvas id="canvas"></canvas>
     <div class="container">
         <section id="hero">
             <h1>NANDANA KP</h1>
             <p>Cybersecurity Analyst | Ethical Hacker</p>
             <p>nandanaedu5@gmail.com | +91 7034531699 | Willing to Relocate</p>
             <div class="social-icons">
-                <a href="https://github.com/yourusername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/yourusername" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Nandu768" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/nandana-kp-a96789352" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
             <a href="NandanaResume.pdf" download class="download-btn">Download Resume</a>
         </section>
 
         <section id="summary" class="section">
-            <h2>Professional Summary</h2>
+            <h2><i class="fas fa-user-shield"></i> Professional Summary</h2>
             <p>Enthusiastic and detail-oriented Cybersecurity Analyst with hands-on experience in vulnerability assessment, penetration testing, and threat detection. Strong foundation in networking concepts such as TCP/IP, routing, firewalls, and DNS. Skilled in using tools like Nessus, Wireshark, Burp Suite, and OWASP ZAP for network and web penetration testing. Committed to ensuring system and network security through continuous monitoring, analysis, and testing.</p>
         </section>
 
         <section id="experience" class="section">
-            <h2>Experience</h2>
+            <h2><i class="fas fa-briefcase"></i> Experience</h2>
             <div class="experience-item">
                 <h3>Security Analyst Trainee</h3>
                 <p>Apr 2025 – Present | Keralavision Broadband Ltd, Thrissur</p>
@@ -135,7 +226,7 @@
         </section>
 
         <section id="education" class="section">
-            <h2>Education</h2>
+            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
             <div class="education-item">
                 <h3>M.Sc. in Cyber Security & Ethical Hacking</h3>
                 <p>2023 – 2025 | Yenepoya University, Mangalore | CGPA: 9.0/10</p>
@@ -147,7 +238,7 @@
         </section>
 
         <section id="projects" class="section">
-            <h2>Projects</h2>
+            <h2><i class="fas fa-project-diagram"></i> Projects</h2>
             <div class="project">
                 <h3>Streamflix-Secure System</h3>
                 <ul>
@@ -189,7 +280,7 @@
         </section>
 
         <section id="skills" class="section">
-            <h2>Skills</h2>
+            <h2><i class="fas fa-tools"></i> Skills</h2>
             <div class="skill-category">
                 <h3>Penetration Testing</h3>
                 <div class="skill-list">
@@ -199,7 +290,7 @@
             <div class="skill-category">
                 <h3>Red Teaming</h3>
                 <div class="skill-list">
-                    <span>Active Directory assessments</span> <span>Privilege escalation</span> <span>Lateral movement</span> <span>Evasion techniques</span> <span>Phishing</span> <span>Vishing</span>
+                    <span>Active Directory assessments</span> <span>Privilege escalation</span> <span>Lateral movement</span> <span>Evasion techniques</span> <span>Phishing</span> <span>Vishing</span> <span>BloodHound</span>
                 </div>
             </div>
             <div class="skill-category">
@@ -215,15 +306,9 @@
                 </div>
             </div>
             <div class="skill-category">
-                <h3>Vulnerabilities</h3>
-                <div class="skill-list">
-                    <span>RFI</span> <span>SSRF</span> <span>SQLi</span> <span>XSS</span> <span>IDOR</span> <span>XXE</span> <span>Buffer Overflow</span> <span>RCE</span> <span>LFI</span>
-                </div>
-            </div>
-            <div class="skill-category">
                 <h3>Tools</h3>
                 <div class="skill-list">
-                    <span>Nmap</span> <span>Wireshark</span> <span>SQLmap</span> <span>Mimikatz</span> <span>Responder</span> <span>Postman</span> <span>mitmproxy</span>
+                    <span>Nmap</span> <span>Wireshark</span> <span>SQLmap</span> <span>Mimikatz</span> <span>Responder</span> <span>Postman</span> <span>mitmproxy</span> <span>Yara</span>
                 </div>
             </div>
             <div class="skill-category">
@@ -253,7 +338,7 @@
         </section>
 
         <section id="certifications" class="section">
-            <h2>Certifications</h2>
+            <h2><i class="fas fa-certificate"></i> Certifications</h2>
             <ul>
                 <li>Cybersecurity Internship – Cyber Police Station, Malappuram</li>
                 <li>Cybersecurity Tools & Attacks – IBM (Coursera)</li>
@@ -266,11 +351,77 @@
         </section>
 
         <section id="languages" class="section">
-            <h2>Languages</h2>
+            <h2><i class="fas fa-language"></i> Languages</h2>
             <div class="skill-list">
                 <span>English</span> <span>Malayalam</span> <span>Hindi</span> <span>Tamil</span> <span>Kannada</span>
             </div>
         </section>
     </div>
+    <script>
+        class MatrixRain {
+            constructor(element, width, height, charList = [
+                '0','1','2','3','4','5','6','7','8','9',
+                'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+                '+','-','*','=','<','>',':','.',
+                'ﾊ','ﾐ','ﾋ','ｰ','ｳ','ｼ','ﾅ','ﾓ','ﾆ','ｻ','ﾜ','ﾂ','ｵ','ﾘ','ｱ','ﾎ','ﾃ','ﾏ','ｹ','ﾒ','ｴ','ｶ','ｷ','ﾑ','ﾕ','ﾗ','ｾ','ﾈ','ｽ','ﾀ','ﾇ','ﾍ'
+            ], red = 0, green = 0, blue = 255, randomColors = false, flowRate = 1, fps = 20) {
+                this.canvas = element;
+                this.ctx = this.canvas.getContext('2d');
+                this.width = width;
+                this.height = height;
+                this.charList = charList;
+                this.red = red;
+                this.green = green;
+                this.blue = blue;
+                this.randomColors = randomColors;
+                this.flowRate = flowRate;
+                this.fps = fps;
+                this.columns = Math.floor(width / 10);
+                this.drops = Array(this.columns).fill(0).map(() => Math.random() * height);
+
+                this.setCanvasDimensions(width, height);
+                this.animate();
+            }
+
+            setCanvasDimensions(width, height) {
+                this.canvas.width = width;
+                this.canvas.height = height;
+                this.width = width;
+                this.height = height;
+                this.columns = Math.floor(width / 10);
+                this.drops = Array(this.columns).fill(0).map(() => Math.random() * height);
+            }
+
+            animate() {
+                setInterval(() => {
+                    this.ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                    this.ctx.fillRect(0, 0, this.width, this.height);
+
+                    for (let i = 0; i < this.drops.length; i++) {
+                        const text = this.charList[Math.floor(Math.random() * this.charList.length)];
+                        this.ctx.fillStyle = this.randomColors ? 
+                            `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})` :
+                            `rgb(${this.red}, ${this.green}, ${this.blue})`;
+                        this.ctx.font = '15px monospace';
+                        this.ctx.fillText(text, i * 10, this.drops[i] * 10);
+
+                        if (this.drops[i] * 10 > this.height && Math.random() > 0.975)
+                            this.drops[i] = 0;
+                        this.drops[i] += this.flowRate;
+                    }
+                }, 1000 / this.fps);
+            }
+        }
+
+        const matrixRain = new MatrixRain(
+            document.getElementById("canvas"),
+            window.innerWidth,
+            window.innerHeight
+        );
+
+        window.addEventListener("resize", () => {
+            matrixRain.setCanvasDimensions(window.innerWidth, window.innerHeight);
+        });
+    </script>
 </body>
 </html>
