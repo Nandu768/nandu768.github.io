@@ -22,7 +22,7 @@
             top: 0;
             left: 0;
             z-index: -1;
-            background: #000;
+            background: #0a0a1a;
         }
         .container {
             max-width: 1200px;
@@ -35,7 +35,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(10, 10, 26, 0.9);
             padding: 10px 0;
             text-align: center;
             z-index: 10;
@@ -43,17 +43,32 @@
         }
         .nav a {
             color: #00bfff;
-            margin: 0 15px;
+            margin: 0 10px;
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s;
+            font-size: 1em;
         }
         .nav a:hover {
             color: #fff;
         }
+        .nav-toggle {
+            display: none;
+            font-size: 1.5em;
+            background: none;
+            border: none;
+            color: #00bfff;
+            cursor: pointer;
+            padding: 10px;
+        }
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         .section {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 40px 20px;
+            background: rgba(10, 10, 26, 0.9);
+            padding: 30px 15px;
             margin-bottom: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0, 0, 255, 0.2);
@@ -81,29 +96,33 @@
         }
         #hero {
             text-align: center;
-            padding: 150px 20px 100px;
+            padding: 120px 20px 80px;
             background: none;
         }
         #hero h1 {
-            font-size: 3em;
+            font-size: 2.5em;
             margin-bottom: 10px;
             font-family: 'Roboto Mono', monospace;
             color: #00bfff;
-            text-shadow: 0 0 10px #00bfff;
+            text-shadow: 0 0 15px #00bfff, 0 0 30px rgba(0, 191, 255, 0.5);
         }
         #hero p {
-            font-size: 1.2em;
+            font-size: 1.1em;
             margin: 5px 0;
+        }
+        .social-icons {
+            margin: 20px 0;
         }
         .social-icons a {
             color: #00bfff;
-            margin: 0 15px;
+            margin: 0 10px;
             text-decoration: none;
-            font-size: 2.5em;
-            transition: color 0.3s;
+            font-size: 2em;
+            transition: color 0.3s, text-shadow 0.3s;
         }
         .social-icons a:hover {
             color: #fff;
+            text-shadow: 0 0 10px #fff;
         }
         h2 {
             border-bottom: 2px solid #00bfff;
@@ -111,6 +130,7 @@
             margin-bottom: 20px;
             font-family: 'Roboto Mono', monospace;
             color: #00bfff;
+            font-size: 1.5em;
             display: flex;
             align-items: center;
         }
@@ -123,58 +143,99 @@
             padding-left: 20px;
         }
         .project, .skill-category {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         .skill-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 10px;
         }
         .skill-list span {
             background: rgba(0, 191, 255, 0.2);
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 5px;
-            font-size: 0.9em;
+            font-size: 0.85em;
             text-align: center;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.3s;
         }
         .skill-list span:hover {
             background: rgba(0, 191, 255, 0.4);
+            transform: scale(1.05);
         }
         .download-btn {
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 15px;
             padding: 10px 20px;
             background: #00bfff;
             color: #000;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 191, 255, 0.3);
+            font-size: 1em;
         }
         .download-btn:hover {
             background: #fff;
             color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 191, 255, 0.4);
         }
-        /* Mobile responsiveness */
+        /* Mobile responsiveness enhancements */
         @media (max-width: 768px) {
-            #hero {
-                padding: 100px 20px 50px;
-            }
-            #hero h1 {
-                font-size: 2.5em;
-            }
-            .section {
-                padding: 30px 15px;
-            }
-            .skill-list {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            }
             .nav {
                 padding: 5px 0;
+                background: rgba(10, 10, 26, 0.95);
+            }
+            .nav-toggle {
+                display: block;
+                position: absolute;
+                left: 10px;
+                top: 10px;
+            }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 26, 0.95);
+            }
+            .nav-menu.active {
+                display: flex;
             }
             .nav a {
-                margin: 0 10px;
+                margin: 10px 0;
+                font-size: 1.1em;
+            }
+            #hero {
+                padding: 80px 20px 40px;
+            }
+            #hero h1 {
+                font-size: 2em;
+            }
+            #hero p {
+                font-size: 1em;
+            }
+            .social-icons a {
+                font-size: 1.5em;
+            }
+            .section {
+                padding: 20px 10px;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            .skill-list {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+            .skill-list span {
+                font-size: 0.8em;
+                padding: 4px 8px;
+            }
+            .download-btn {
+                padding: 8px 15px;
                 font-size: 0.9em;
             }
         }
@@ -182,13 +243,16 @@
 </head>
 <body>
     <nav class="nav">
-        <a href="#summary">Summary</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#languages">Languages</a>
+        <button class="nav-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+        <div class="nav-menu" id="navMenu">
+            <a href="#summary">Summary</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#languages">Languages</a>
+        </div>
     </nav>
     <canvas id="canvas"></canvas>
     <div class="container">
@@ -358,28 +422,18 @@
         </section>
     </div>
     <script>
-        class MatrixRain {
-            constructor(element, width, height, charList = [
-                '0','1','2','3','4','5','6','7','8','9',
-                'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-                '+','-','*','=','<','>',':','.',
-                'ﾊ','ﾐ','ﾋ','ｰ','ｳ','ｼ','ﾅ','ﾓ','ﾆ','ｻ','ﾜ','ﾂ','ｵ','ﾘ','ｱ','ﾎ','ﾃ','ﾏ','ｹ','ﾒ','ｴ','ｶ','ｷ','ﾑ','ﾕ','ﾗ','ｾ','ﾈ','ｽ','ﾀ','ﾇ','ﾍ'
-            ], red = 0, green = 0, blue = 255, randomColors = false, flowRate = 1, fps = 20) {
+        class NetworkAnimation {
+            constructor(element, width, height) {
                 this.canvas = element;
                 this.ctx = this.canvas.getContext('2d');
                 this.width = width;
                 this.height = height;
-                this.charList = charList;
-                this.red = red;
-                this.green = green;
-                this.blue = blue;
-                this.randomColors = randomColors;
-                this.flowRate = flowRate;
-                this.fps = fps;
-                this.columns = Math.floor(width / 10);
-                this.drops = Array(this.columns).fill(0).map(() => Math.random() * height);
+                this.nodes = [];
+                this.maxNodes = 100;
+                this.maxConnections = 150;
 
                 this.setCanvasDimensions(width, height);
+                this.initNodes();
                 this.animate();
             }
 
@@ -388,40 +442,73 @@
                 this.canvas.height = height;
                 this.width = width;
                 this.height = height;
-                this.columns = Math.floor(width / 10);
-                this.drops = Array(this.columns).fill(0).map(() => Math.random() * height);
+            }
+
+            initNodes() {
+                for (let i = 0; i < this.maxNodes; i++) {
+                    this.nodes.push({
+                        x: Math.random() * this.width,
+                        y: Math.random() * this.height,
+                        vx: (Math.random() - 0.5) * 2,
+                        vy: (Math.random() - 0.5) * 2,
+                        r: Math.random() * 2 + 1
+                    });
+                }
             }
 
             animate() {
-                setInterval(() => {
-                    this.ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-                    this.ctx.fillRect(0, 0, this.width, this.height);
+                requestAnimationFrame(() => this.animate());
+                this.ctx.fillStyle = 'rgba(10, 10, 26, 0.1)';
+                this.ctx.fillRect(0, 0, this.width, this.height);
 
-                    for (let i = 0; i < this.drops.length; i++) {
-                        const text = this.charList[Math.floor(Math.random() * this.charList.length)];
-                        this.ctx.fillStyle = this.randomColors ? 
-                            `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})` :
-                            `rgb(${this.red}, ${this.green}, ${this.blue})`;
-                        this.ctx.font = '15px monospace';
-                        this.ctx.fillText(text, i * 10, this.drops[i] * 10);
+                this.nodes.forEach(node => {
+                    node.x += node.vx;
+                    node.y += node.vy;
 
-                        if (this.drops[i] * 10 > this.height && Math.random() > 0.975)
-                            this.drops[i] = 0;
-                        this.drops[i] += this.flowRate;
+                    if (node.x < 0 || node.x > this.width) node.vx *= -1;
+                    if (node.y < 0 || node.y > this.height) node.vy *= -1;
+
+                    this.ctx.beginPath();
+                    this.ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
+                    this.ctx.fillStyle = `rgba(0, 191, 255, ${Math.random() * 0.5 + 0.5})`;
+                    this.ctx.fill();
+                    this.ctx.closePath();
+                });
+
+                for (let i = 0; i < this.maxConnections; i++) {
+                    const nodeA = this.nodes[Math.floor(Math.random() * this.maxNodes)];
+                    const nodeB = this.nodes[Math.floor(Math.random() * this.maxNodes)];
+                    const dx = nodeA.x - nodeB.x;
+                    const dy = nodeA.y - nodeB.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 150) {
+                        this.ctx.beginPath();
+                        this.ctx.strokeStyle = `rgba(0, 191, 255, ${1 - distance / 150})`;
+                        this.ctx.lineWidth = 0.5;
+                        this.ctx.moveTo(nodeA.x, nodeA.y);
+                        this.ctx.lineTo(nodeB.x, nodeB.y);
+                        this.ctx.stroke();
+                        this.ctx.closePath();
                     }
-                }, 1000 / this.fps);
+                }
             }
         }
 
-        const matrixRain = new MatrixRain(
+        const networkAnimation = new NetworkAnimation(
             document.getElementById("canvas"),
             window.innerWidth,
             window.innerHeight
         );
 
         window.addEventListener("resize", () => {
-            matrixRain.setCanvasDimensions(window.innerWidth, window.innerHeight);
+            networkAnimation.setCanvasDimensions(window.innerWidth, window.innerHeight);
         });
+
+        function toggleMenu() {
+            const navMenu = document.getElementById("navMenu");
+            navMenu.classList.toggle("active");
+        }
     </script>
 </body>
 </html>
