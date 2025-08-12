@@ -32,14 +32,66 @@
             position: relative;
             z-index: 1;
         }
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 26, 0.9);
+            padding: 10px 0;
+            text-align: center;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 191, 255, 0.2);
+        }
+        .nav a {
+            color: #00bfff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, text-shadow 0.3s;
+            font-size: 1em;
+        }
+        .nav a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #00bfff;
+        }
+        .nav-toggle {
+            display: none;
+            font-size: 1.5em;
+            background: none;
+            border: none;
+            color: #00bfff;
+            cursor: pointer;
+            padding: 10px;
+        }
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         .section {
             background: rgba(10, 10, 26, 0.9);
             padding: 30px 15px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0, 191, 255, 0.2);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards;
         }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
+        .section:nth-child(5) { animation-delay: 0.8s; }
+        .section:nth-child(6) { animation-delay: 1s; }
+        .section:nth-child(7) { animation-delay: 1.2s; }
+        .section:nth-child(8) { animation-delay: 1.4s; }
         .section:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 20px rgba(0, 191, 255, 0.3);
@@ -47,6 +99,7 @@
         #hero {
             text-align: center;
             padding: 120px 20px 80px;
+            background: none;
         }
         #hero h1 {
             font-size: 2.5em;
@@ -55,7 +108,6 @@
             color: #00bfff;
             text-shadow: 0 0 20px #00bfff, 0 0 40px rgba(0, 191, 255, 0.7);
             animation: pulse 2s infinite alternate;
-            font-weight: bold;
         }
         @keyframes pulse {
             from { text-shadow: 0 0 20px #00bfff, 0 0 40px rgba(0, 191, 255, 0.7); }
@@ -88,64 +140,69 @@
             font-family: 'Roboto Mono', monospace;
             color: #00bfff;
             font-size: 1.5em;
+            display: flex;
+            align-items: center;
             text-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
+        }
+        h2 i {
+            margin-right: 10px;
+            color: #00bfff;
         }
         ul {
             list-style-type: disc;
             padding-left: 20px;
             color: #00bfff;
         }
-        .project {
+        .project, .skill-category {
             margin-bottom: 20px;
         }
-        .project h3 {
-            color: #00bfff;
-            margin-bottom: 10px;
-            font-family: 'Roboto Mono', monospace;
+        .skill-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
         }
-        .project ul {
-            margin-top: 5px;
-        }
-        .about-me p {
-            line-height: 1.6;
-        }
-        .contact-info {
-            font-size: 1.1em;
-        }
-        .resume-link {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            background: #00bfff;
-            color: #000;
-            text-decoration: none;
+        .skill-list span {
+            background: rgba(0, 191, 255, 0.2);
+            padding: 6px 10px;
             border-radius: 5px;
-            transition: background 0.3s, transform 0.3s;
-        }
-        .resume-link:hover {
-            background: #fff;
-            transform: translateY(-2px);
-        }
-        .resume-content {
-            white-space: pre-wrap;
-            font-family: monospace;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-            display: none;
-        }
-        footer {
+            font-size: 0.85em;
             text-align: center;
-            padding: 20px;
-            background: rgba(10, 10, 26, 0.9);
             color: #00bfff;
-            font-size: 0.9em;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
         }
-        footer .blue-heart {
-            color: #00bfff;
+        .skill-list span:hover {
+            background: rgba(0, 191, 255, 0.4);
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
         }
+        /* Mobile responsiveness */
         @media (max-width: 768px) {
+            .nav {
+                padding: 5px 0;
+                background: rgba(10, 10, 26, 0.95);
+            }
+            .nav-toggle {
+                display: block;
+                position: absolute;
+                left: 10px;
+                top: 10px;
+            }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 26, 0.95);
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav a {
+                margin: 10px 0;
+                font-size: 1.1em;
+            }
             #hero {
                 padding: 80px 20px 40px;
             }
@@ -164,35 +221,79 @@
             h2 {
                 font-size: 1.3em;
             }
-            .project h3 {
-                font-size: 1.2em;
+            .skill-list {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+            .skill-list span {
+                font-size: 0.8em;
+                padding: 4px 8px;
             }
         }
     </style>
 </head>
 <body>
+    <nav class="nav">
+        <button class="nav-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+        <div class="nav-menu" id="navMenu">
+            <a href="#summary">Summary</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#languages">Languages</a>
+        </div>
+    </nav>
     <canvas id="canvas"></canvas>
     <div class="container">
-        <section id="hero" class="section">
-            <h1>Hi! It's me Nandana</h1>
+        <section id="hero">
+            <h1>NANDANA KP</h1>
             <p>Cybersecurity Analyst | Ethical Hacker</p>
-            <p>Protecting digital frontiers with expertise in penetration testing and threat analysis.</p>
+            <p>nandanaedu5@gmail.com | +91 7034531699 | Willing to Relocate</p>
             <div class="social-icons">
                 <a href="https://github.com/Nandu768" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/nandana-kp-a96789352" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
-            <a href="#" class="resume-link" onclick="toggleResume()">View Resume</a>
         </section>
 
-        <section id="about-me" class="section">
-            <h2>About Me</h2>
+        <section id="summary" class="section">
+            <h2><i class="fas fa-user-shield"></i> Professional Summary</h2>
             <p>Enthusiastic and detail-oriented Cybersecurity Analyst with hands-on experience in vulnerability assessment, penetration testing, and threat detection. Strong foundation in networking concepts such as TCP/IP, routing, firewalls, and DNS. Skilled in using tools like Nessus, Wireshark, Burp Suite, and OWASP ZAP for network and web penetration testing. Committed to ensuring system and network security through continuous monitoring, analysis, and testing.</p>
         </section>
 
-        <section id="portfolio" class="section">
-            <h2>Project Gallery</h2>
+        <section id="experience" class="section">
+            <h2><i class="fas fa-briefcase"></i> Experience</h2>
+            <div class="experience-item">
+                <h3>Security Analyst Trainee</h3>
+                <p>Apr 2025 – Present | Keralavision Broadband Ltd, Thrissur</p>
+                <ul>
+                    <li>Conducted vulnerability assessments using OpenVAS and OWASP ZAP on internal portals.</li>
+                    <li>Analyzed network logs and threat indicators using SIEM tools and Wireshark.</li>
+                    <li>Performed regular port scanning, firmware checks, and packet inspection on routers and switches.</li>
+                    <li>Performed web scraping using OSINT tools to gather actionable threat intelligence.</li>
+                    <li>Conducted web application penetration testing on internal assets, identifying vulnerabilities in real-world environments.</li>
+                    <li>Collaborated cross-functionally with teams to analyze product risks and highlight cyber threats.</li>
+                    <li>Applied problem-solving skills to troubleshoot cybersecurity issues, often working late to resolve complex cases.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+            <div class="education-item">
+                <h3>M.Sc. in Cyber Security & Ethical Hacking</h3>
+                <p>2023 – 2025 | Yenepoya University, Mangalore | CGPA: 9.0/10</p>
+            </div>
+            <div class="education-item">
+                <h3>B.Sc. in Forensic Science, Chemistry, Genetics</h3>
+                <p>2019 – 2022 | Garden City University, Bangalore | CGPA: 9.1/10</p>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h2><i class="fas fa-project-diagram"></i> Projects</h2>
             <div class="project">
-                <h3>GitHub - streamflix-auth-app</h3>
+                <h3>Streamflix-Secure System</h3>
                 <ul>
                     <li>Designed a secure streaming web system using Python and Streamlit.</li>
                     <li>Implemented MFA login authentication to ensure strong access control.</li>
@@ -202,7 +303,25 @@
                 </ul>
             </div>
             <div class="project">
-                <h3>GitHub - keylogger</h3>
+                <h3>AI-Powered Network Traffic Analysis and Anomaly Detection</h3>
+                <ul>
+                    <li>Developed real-time network traffic analysis system using machine learning in Python.</li>
+                    <li>Detected DDoS and insider threats using supervised models (Random Forest, KNN).</li>
+                    <li>Integrated Wireshark for live packet capture and behavior analysis.</li>
+                    <li>Deployed Streamlit dashboard for visualizing network anomalies.</li>
+                </ul>
+            </div>
+            <div class="project">
+                <h3>Secure Event Management Web Application</h3>
+                <ul>
+                    <li>Built a PHP-based web portal with role-based access control and secure login.</li>
+                    <li>Conducted penetration testing using Burp Suite and OWASP ZAP.</li>
+                    <li>Hardened the app against SQL Injection, XSS, and CSRF.</li>
+                    <li>Implemented server-side logging and anomaly detection for admin alerts.</li>
+                </ul>
+            </div>
+            <div class="project">
+                <h3>Windows-Based Keylogger with Persistence</h3>
                 <ul>
                     <li>Created a Python-based keylogger for Windows environments to simulate real-world malware behavior.</li>
                     <li>Enabled stealth mode and persistence through registry modification and startup injection.</li>
@@ -211,163 +330,86 @@
                     <li>Demonstrated ethical use for malware behavior analysis and training simulations.</li>
                 </ul>
             </div>
-            <div class="project">
-                <h3>GitHub - shadownet</h3>
-                <ul>
-                    <li>Developed real-time network traffic analysis system using machine learning in Python.</li>
-                    <li>Detected DDoS and insider threats using supervised models (Random Forest, KNN).</li>
-                    <li>Integrated Wireshark for live packet capture and behavior analysis.</li>
-                    <li>Deployed Streamlit dashboard for visualizing network anomalies.</li>
-                </ul>
+        </section>
+
+        <section id="skills" class="section">
+            <h2><i class="fas fa-tools"></i> Skills</h2>
+            <div class="skill-category">
+                <h3>Penetration Testing</h3>
+                <div class="skill-list">
+                    <span>Burp Suite</span> <span>OWASP ZAP</span> <span>Nessus</span> <span>Nikto</span> <span>OpenVAS</span> <span>Metasploit</span> <span>Cobalt Strike</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Red Teaming</h3>
+                <div class="skill-list">
+                    <span>Active Directory assessments</span> <span>Privilege escalation</span> <span>Lateral movement</span> <span>Evasion techniques</span> <span>Phishing</span> <span>Vishing</span> <span>BloodHound</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Cloud Security</h3>
+                <div class="skill-list">
+                    <span>AWS</span> <span>Azure</span> <span>GCP assessments</span> <span>Kubernetes testing</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Web & App Security</h3>
+                <div class="skill-list">
+                    <span>OWASP Top 10</span> <span>API Security</span> <span>Mobile (Android/iOS/Windows/Linux)</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Tools</h3>
+                <div class="skill-list">
+                    <span>Nmap</span> <span>Wireshark</span> <span>SQLmap</span> <span>Mimikatz</span> <span>Responder</span> <span>Postman</span> <span>mitmproxy</span> <span>Yara</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Programming</h3>
+                <div class="skill-list">
+                    <span>Python</span> <span>Bash</span> <span>PowerShell</span> <span>JavaScript</span> <span>SQL</span> <span>HTML</span> <span>PHP</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Platforms</h3>
+                <div class="skill-list">
+                    <span>Windows</span> <span>Linux (Kali, Ubuntu)</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Monitoring & Analysis</h3>
+                <div class="skill-list">
+                    <span>Wireshark</span> <span>Splunk</span> <span>SIEM</span> <span>EDR</span> <span>IDS/IPS</span> <span>Log Analysis</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Soft Skills</h3>
+                <div class="skill-list">
+                    <span>Teamwork</span> <span>Communication</span> <span>Time Management</span> <span>Documentation</span> <span>Critical Thinking</span> <span>Problem Solving</span> <span>Leadership</span> <span>Adaptability</span> <span>Attention to Detail</span> <span>Conflict Resolution</span> <span>Collaboration</span>
+                </div>
             </div>
         </section>
 
-        <section id="contact" class="section">
-            <h2>Contact Information</h2>
-            <div class="contact-info">
-                <p>Email: nandanaedu5@gmail.com</p>
-                <p>Phone: +91 7034531699</p>
-                <p>Location: Kerala, Willing to Relocate</p>
-            </div>
+        <section id="certifications" class="section">
+            <h2><i class="fas fa-certificate"></i> Certifications</h2>
+            <ul>
+                <li>Cybersecurity Internship – Cyber Police Station, Malappuram</li>
+                <li>Cybersecurity Tools & Attacks – IBM (Coursera)</li>
+                <li>SQL Injection Attack – EC-Council</li>
+                <li>Cybersecurity Analyst Job Simulation – TCS Forage</li>
+                <li>Endpoint Security – Cisco NetAcad</li>
+                <li>Fortinet Certified Fundamentals – FCF 3.0</li>
+                <li>CEH (Certified Ethical Hacker) – Pursuing</li>
+            </ul>
         </section>
 
-        <section id="resume-content" class="resume-content">
-            NANDANA KP
-nandanaedu5@gmail.com – +91 7034531699
-LinkedIn
-GitHub
-Willing to Relocate
-
-Professional Summary
-
-Enthusiastic and detail-oriented Cybersecurity Analyst with hands-on experience in vulnerability assess-
-ment, penetration testing, and threat detection. Strong foundation in networking concepts such as TCP/IP,
-routing, firewalls, and DNS. Skilled in using tools like Nessus, Wireshark, Burp Suite, and OWASP ZAP
-for network and web penetration testing. Committed to ensuring system and network security through
-continuous monitoring, analysis, and testing.
-
-Experience
-
-Security Analyst Trainee
-Apr 2025 – Present
-Keralavision Broadband Ltd, Thrissur
-
-• Conducted vulnerability assessments using OpenVAS and OWASP ZAP on internal portals.
-
-• Analyzed network logs and threat indicators using SIEM tools and Wireshark.
-
-• Performed regular port scanning, firmware checks, and packet inspection on routers and switches.
-
-• Performed web scraping using OSINT tools to gather actionable threat intelligence.
-
-• Conducted web application penetration testing on internal assets, identifying vulnerabilities in real-world
-environments.
-
-• Collaborated cross-functionally with teams to analyze product risks and highlight cyber threats.
-
-• Applied problem-solving skills to troubleshoot cybersecurity issues, often working late to resolve complex
-cases.
-
-Education
-
-M.Sc. in Cyber Security & Ethical Hacking
-2023 – 2025
-Yenepoya University, Mangalore
-CGPA: 9.0/10
-B.Sc. in Forensic Science, Chemistry, Genetics
-2019 – 2022
-Garden City University, Bangalore
-CGPA: 9.1/10
-
-Projects
-
-Streamflix-Secure System
-
-• Designed a secure streaming web system using Python and Streamlit.
-
-• Implemented MFA login authentication to ensure strong access control.
-
-• Integrated secure payment features with validation, encryption, and logging.
-
-• Enforced account lockout after 3 failed login attempts with alert generation.
-
-• Built Streamlit-based admin panel to monitor access logs and user activity.
-
-AI-Powered Network Traffic Analysis and Anomaly Detection
-
-• Developed real-time network traffic analysis system using machine learning in Python.
-
-• Detected DDoS and insider threats using supervised models (Random Forest, KNN).
-
-• Integrated Wireshark for live packet capture and behavior analysis.
-
-• Deployed Streamlit dashboard for visualizing network anomalies.
-
-Secure Event Management Web Application
-
-• Built a PHP-based web portal with role-based access control and secure login.
-
-• Conducted penetration testing using Burp Suite and OWASP ZAP.
-
-• Hardened the app against SQL Injection, XSS, and CSRF.
-
-• Implemented server-side logging and anomaly detection for admin alerts.
-
-Windows-Based Keylogger with Persistence
-
-• Created a Python-based keylogger for Windows environments to simulate real-world malware behavior.
-
-• Enabled stealth mode and persistence through registry modification and startup injection.
-
-• Logged keystrokes to an encrypted file and exfiltrated data via SMTP/email simulation.
-
-• Incorporated anti-debugging techniques to evade sandbox analysis and basic detection.
-
-• Demonstrated ethical use for malware behavior analysis and training simulations.
-
-Skills
-
-Penetration Testing: Burp Suite, OWASP ZAP, Nessus, Nikto, OpenVAS, Metasploit, Cobalt Strike
-Red Teaming: Active Directory assessments, privilege escalation, lateral movement, evasion techniques,
-phishing, vishing
-Cloud Security: AWS, Azure, GCP assessments, Kubernetes testing
-Web & App Security: OWASP Top 10, API Security, Mobile (Android/iOS/Windows/Linux)
-Vulnerabilities: RFI, SSRF, SQLi, XSS, IDOR, XXE, Buffer Overflow, RCE, LFI
-Tools: Nmap, Wireshark, SQLmap, Mimikatz, Responder, Postman, mitmproxy
-Programming: Python, Bash, PowerShell, JavaScript, SQL, HTML, PHP
-Platforms: Windows, Linux (Kali, Ubuntu)
-Monitoring & Analysis: Wireshark, Splunk, SIEM, EDR, IDS/IPS, Log Analysis
-
-Soft Skills
-
-Teamwork, Communication, Time Management, Documentation, Critical Thinking, Problem Solving, Lead-
-ership, Adaptability, Attention to Detail, Conflict Resolution, Collaboration
-
-Certifications
-
-• Cybersecurity Internship – Cyber Police Station, Malappuram
-
-• Cybersecurity Tools & Attacks – IBM (Coursera)
-
-• SQL Injection Attack – EC-Council
-
-• Cybersecurity Analyst Job Simulation – TCS Forage
-
-• Endpoint Security – Cisco NetAcad
-
-• Fortinet Certified Fundamentals – FCF 3.0
-
-• CEH (Certified Ethical Hacker) – Pursuing
-
-Languages
-
-English, Malayalam, Hindi, Tamil, Kannada
-
+        <section id="languages" class="section">
+            <h2><i class="fas fa-language"></i> Languages</h2>
+            <div class="skill-list">
+                <span>English</span> <span>Malayalam</span> <span>Hindi</span> <span>Tamil</span> <span>Kannada</span>
+            </div>
         </section>
     </div>
-    <footer>
-        Made with <span class="blue-heart">&#x1F499;</span> by Nandana KP | © 2025 Nandana KP. All rights reserved.
-    </footer>
     <script>
         class NetworkAnimation {
             constructor(element, width, height) {
@@ -452,9 +494,9 @@ English, Malayalam, Hindi, Tamil, Kannada
             networkAnimation.setCanvasDimensions(window.innerWidth, window.innerHeight);
         });
 
-        function toggleResume() {
-            const resume = document.getElementById("resume-content");
-            resume.style.display = resume.style.display === "none" ? "block" : "none";
+        function toggleMenu() {
+            const navMenu = document.getElementById("navMenu");
+            navMenu.classList.toggle("active");
         }
     </script>
 </body>
