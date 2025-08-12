@@ -55,6 +55,7 @@
             color: #00bfff;
             text-shadow: 0 0 20px #00bfff, 0 0 40px rgba(0, 191, 255, 0.7);
             animation: pulse 2s infinite alternate;
+            font-weight: bold;
         }
         @keyframes pulse {
             from { text-shadow: 0 0 20px #00bfff, 0 0 40px rgba(0, 191, 255, 0.7); }
@@ -111,7 +112,7 @@
         .contact-info {
             font-size: 1.1em;
         }
-        .cv-link {
+        .resume-link {
             display: inline-block;
             margin-top: 10px;
             padding: 10px 20px;
@@ -121,17 +122,18 @@
             border-radius: 5px;
             transition: background 0.3s, transform 0.3s;
         }
-        .cv-link:hover {
+        .resume-link:hover {
             background: #fff;
             transform: translateY(-2px);
         }
-        .resume-section {
+        .resume-content {
             white-space: pre-wrap;
             font-family: monospace;
             background: rgba(0, 0, 0, 0.5);
             padding: 15px;
             border-radius: 5px;
             margin-top: 20px;
+            display: none;
         }
         footer {
             text-align: center;
@@ -172,45 +174,52 @@
     <canvas id="canvas"></canvas>
     <div class="container">
         <section id="hero" class="section">
-            <h1>NANDANA KP</h1>
+            <h1>Hi! It's me Nandana</h1>
             <p>Cybersecurity Analyst | Ethical Hacker</p>
             <p>Protecting digital frontiers with expertise in penetration testing and threat analysis.</p>
             <div class="social-icons">
                 <a href="https://github.com/Nandu768" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/nandana-kp-a96789352" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
+            <a href="#" class="resume-link" onclick="toggleResume()">View Resume</a>
+        </section>
+
+        <section id="about-me" class="section">
+            <h2>About Me</h2>
+            <p>Enthusiastic and detail-oriented Cybersecurity Analyst with hands-on experience in vulnerability assessment, penetration testing, and threat detection. Strong foundation in networking concepts such as TCP/IP, routing, firewalls, and DNS. Skilled in using tools like Nessus, Wireshark, Burp Suite, and OWASP ZAP for network and web penetration testing. Committed to ensuring system and network security through continuous monitoring, analysis, and testing.</p>
         </section>
 
         <section id="portfolio" class="section">
-            <h2>Portfolio / Work Showcase</h2>
+            <h2>Project Gallery</h2>
             <div class="project">
                 <h3>GitHub - streamflix-auth-app</h3>
                 <ul>
-                    <li>Developed a Streamlit-based movie dashboard with secure user authentication.</li>
-                    <li>Implemented password strength checks and MFA via SMS for enhanced security.</li>
-                    <li>Utilized SQLite for user management and movie listings.</li>
+                    <li>Designed a secure streaming web system using Python and Streamlit.</li>
+                    <li>Implemented MFA login authentication to ensure strong access control.</li>
+                    <li>Integrated secure payment features with validation, encryption, and logging.</li>
+                    <li>Enforced account lockout after 3 failed login attempts with alert generation.</li>
+                    <li>Built Streamlit-based admin panel to monitor access logs and user activity.</li>
                 </ul>
             </div>
             <div class="project">
                 <h3>GitHub - keylogger</h3>
                 <ul>
-                    <li>Created a Python-based keylogger with real-time Streamlit dashboard.</li>
-                    <li>Features include hotkey support (Ctrl+Shift+Q), downloadable logs, and Linux permission checks.</li>
-                    <li>Designed for ethical testing purposes with anti-debugging techniques.</li>
+                    <li>Created a Python-based keylogger for Windows environments to simulate real-world malware behavior.</li>
+                    <li>Enabled stealth mode and persistence through registry modification and startup injection.</li>
+                    <li>Logged keystrokes to an encrypted file and exfiltrated data via SMTP/email simulation.</li>
+                    <li>Incorporated anti-debugging techniques to evade sandbox analysis and basic detection.</li>
+                    <li>Demonstrated ethical use for malware behavior analysis and training simulations.</li>
                 </ul>
             </div>
             <div class="project">
                 <h3>GitHub - shadownet</h3>
                 <ul>
-                    <li>Built a system for network traffic analysis and anomaly detection.</li>
-                    <li>Focuses on identifying DDoS and insider threats using advanced techniques.</li>
+                    <li>Developed real-time network traffic analysis system using machine learning in Python.</li>
+                    <li>Detected DDoS and insider threats using supervised models (Random Forest, KNN).</li>
+                    <li>Integrated Wireshark for live packet capture and behavior analysis.</li>
+                    <li>Deployed Streamlit dashboard for visualizing network anomalies.</li>
                 </ul>
             </div>
-        </section>
-
-        <section id="about-me" class="section">
-            <h2>About Me</h2>
-            <p>Enthusiastic and detail-oriented Cybersecurity Analyst with hands-on experience in vulnerability assessment, penetration testing, and threat detection. I hold an M.Sc. in Cyber Security & Ethical Hacking from Yenepoya University (CGPA 9.0/10) and a B.Sc. in Forensic Science, Chemistry, Genetics from Garden City University (CGPA 9.1/10). My skill set includes tools like Nessus, Wireshark, Burp Suite, and OWASP ZAP, with expertise in Red Teaming, Cloud Security, and programming languages such as Python and JavaScript. Currently a Security Analyst Trainee at Keralavision Broadband Ltd, I’m committed to safeguarding systems through continuous monitoring and innovative solutions.</p>
         </section>
 
         <section id="contact" class="section">
@@ -219,10 +228,11 @@
                 <p>Email: nandanaedu5@gmail.com</p>
                 <p>Phone: +91 7034531699</p>
                 <p>Location: Kerala, Willing to Relocate</p>
-                <a href="#" class="cv-link" onclick="toggleResume()">View Resume</a>
             </div>
-            <div id="resume" class="resume-section" style="display: none;">
-NANDANA KP
+        </section>
+
+        <section id="resume-content" class="resume-content">
+            NANDANA KP
 nandanaedu5@gmail.com – +91 7034531699
 LinkedIn
 GitHub
@@ -353,7 +363,6 @@ Languages
 
 English, Malayalam, Hindi, Tamil, Kannada
 
-            </div>
         </section>
     </div>
     <footer>
@@ -444,7 +453,7 @@ English, Malayalam, Hindi, Tamil, Kannada
         });
 
         function toggleResume() {
-            const resume = document.getElementById("resume");
+            const resume = document.getElementById("resume-content");
             resume.style.display = resume.style.display === "none" ? "block" : "none";
         }
     </script>
